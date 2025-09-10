@@ -1,0 +1,12 @@
+Для запуска:
+
+Установите зависимости:
+
+bashpip install flask flask-cors pillow opencv-python numpy
+
+Запустите:
+
+bashpython app.py
+
+Откройте в браузере: http://127.0.0.1:5000 
+
