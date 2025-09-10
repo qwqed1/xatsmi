@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактор изображений</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Редактор изображений</h1>
+        
+        <div class="upload-section">
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            <button id="uploadBtn" class="btn-primary">Загрузить изображение</button>
+        </div>
+        
+        <div id="imageSection" class="image-section hidden">
+            <div class="image-container">
+                <div class="image-box">
+                    <h3>Исходное изображение</h3>
+                    <img id="originalImage" alt="Original">
+                    <div class="image-info" id="originalInfo"></div>
+                </div>
+                
+                <div class="image-box">
+                    <h3>Обработанное изображение</h3>
+                    <img id="processedImage" alt="Processed">
+                    <div class="image-info" id="processedInfo"></div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <h3>Качество изображения</h3>
+                    <div class="control-buttons">
+                        <button class="btn-secondary" onclick="processImage('upscale', {scale: 1.5})">Увеличить до 1080p</button>
+                        <button class="btn-secondary" onclick="processImage('upscale', {scale: 2})">Увеличить 2x</button>
+                        <button class="btn-secondary" onclick="processImage('enhance')">Автоулучшение</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Размытие и резкость</h3>
+                    <div class="control-buttons">
+                        <button class="btn-secondary" onclick="processImage('blur', {radius: 1})">Легкое размытие</button>
+                        <button class="btn-secondary" onclick="processImage('blur', {radius: 3})">Сильное размытие</button>
+                        <button class="btn-secondary" onclick="processImage('sharpen', {strength: 1.5})">Повысить резкость</button>
+                        <button class="btn-secondary" onclick="processImage('sharpen', {strength: 2})">Сильная резкость</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Настройки изображения</h3>
+                    <div class="control-buttons">
+                        <button class="btn-secondary" onclick="processImage('brightness', {factor: 1.3})">Увеличить яркость</button>
+                        <button class="btn-secondary" onclick="processImage('brightness', {factor: 0.8})">Уменьшить яркость</button>
+                        <button class="btn-secondary" onclick="processImage('contrast', {factor: 1.3})">Увеличить контраст</button>
+                        <button class="btn-secondary" onclick="processImage('saturation', {factor: 1.4})">Насыщенность</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <h3>Фильтры</h3>
+                    <div class="control-buttons">
+                        <button class="btn-secondary" onclick="processImage('grayscale')">Черно-белый</button>
+                        <button class="btn-secondary" onclick="processImage('sepia')">Сепия</button>
+                        <button class="btn-secondary" onclick="processImage('vintage')">Винтаж</button>
+                    </div>
+                </div>
+                
+                <div class="download-section">
+                    <button id="downloadBtn" class="btn-primary">Скачать результат</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="loading" class="loading hidden">Обработка...</div>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
